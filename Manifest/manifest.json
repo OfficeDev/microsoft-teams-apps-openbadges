@@ -1,0 +1,63 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.5/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.5",
+  "version": "1.0.0",
+  "id": "8ff98e08-d609-4ed3-a815-262843c3583a",
+  "packageName": "com.microsoft.teams.openbadges",
+  "developer": {
+    "name": "<company name>",
+    "websiteUrl": "<website url>",
+    "privacyUrl": "<privacy url>",
+    "termsOfUseUrl": "<terms of use url>"
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "Open Badges"
+  },
+  "description": {
+    "short": "Create and award digital badges to peers to recognize great work.",
+    "full": "Open Badges app will empower individuals to take their learnings and achievements with them, building a rich timeline of their lifelong learning journey by leveraging capabilities from the 3rd party digital badge issuing authority named Badgr."
+  },
+  "accentColor": "#FFFFFF",
+  "bots": [
+    {
+      "botId": "<bot id>",
+      "scopes": [
+        "team"
+      ],
+      "supportsFiles": false,
+      "isNotificationOnly": false
+    }
+  ],
+  "composeExtensions": [
+    {
+      "botId": "<bot id>",
+      "canUpdateConfiguration": true,
+      "commands": [
+        {
+          "id": "badgr",
+          "type": "action",
+          "title": "Open Badges",
+          "description": "Open Badges",
+          "initialRun": true,
+          "fetchTask": true,
+          "context": [
+            "compose",
+            "message"
+          ]
+        }
+      ]
+    }
+  ],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": [
+    "<validdomains>",
+    "token.botframework.com"
+  ]
+}
