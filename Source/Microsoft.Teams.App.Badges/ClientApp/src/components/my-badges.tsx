@@ -17,11 +17,10 @@ const MyBadges: React.FunctionComponent<IMyBadgesState> = props => {
     const myBadgesTableHeader = {
         key: "header",
         items: [
-            { content: <Text weight="bold" content={props.resourceStrings.Badge} />, key: "badge" },
-            { content: <Text weight="bold" content={props.resourceStrings.BadgeName} />, key: "name" },
+            { content: <Text weight="bold" content={props.resourceStrings.Badge} />, key: "badge", className: "table-badge-icon-cell" },
+            { content: <Text weight="bold" content={props.resourceStrings.BadgeName} />, key: "name", className:"table-badge-name-cell" },
             { content: <Text weight="bold" content={props.resourceStrings.BadgeDescription} />, key: "description" },
-            { content: <Text weight="bold" content={props.resourceStrings.AwardedBy} />, key: "awardedby" },
-            { content: <Text weight="bold" content={props.resourceStrings.OnDate} />, key: "date" }
+            { content: <Text weight="bold" content={props.resourceStrings.OnDate} />, key: "date", className: "table-date-cell"  }
         ],
     };
 
@@ -54,11 +53,10 @@ const MyBadges: React.FunctionComponent<IMyBadgesState> = props => {
             {
                 key: index,
                 items: [
-                    { content: <Image className="badge-icon" src={value.ImageUri} />, key: index + "1" },
-                    { content: <Text content={value.Name} />, key: index + "2" },
+                    { content: <Image className="badge-icon" src={value.ImageUri} />, key: index + "1", className:"table-badge-icon-cell" },
+                    { content: <Text content={value.Name} />, key: index + "2", className: "table-badge-name-cell" },
                     { content: <Text content={value.Description} />, key: index + "3", truncateContent: true },
-                    { content: <Text content={value.AwardedBy} />, key: index + "4" },
-                    { content: <Text content={value.AwardedOn} />, key: index + "5" },
+                    { content: <Text content={value.AwardedOn} />, key: index + "5", className: "table-date-cell" },
                 ],
             }
         ));

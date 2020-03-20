@@ -72,3 +72,15 @@
         color: black;
         cursor: pointer;
     }
+
+.table-badge-icon-cell {
+    max-width: 5rem;
+}
+
+.table-date-cell {
+    max-width: 10rem;
+}
+
+.table-badge-name-cell {
+    max-width: 15rem;
+}

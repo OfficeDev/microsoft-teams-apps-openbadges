@@ -8,6 +8,7 @@ namespace Microsoft.Teams.App.Badges
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
+    using System.Net;
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
@@ -333,7 +334,32 @@ namespace Microsoft.Teams.App.Badges
                 };
             }
 
-            var channelMembers = await TeamsInfo.GetTeamMembersAsync(turnContext, teamsDetails.Id);
+            IEnumerable<TeamsChannelAccount> channelMembers = new List<TeamsChannelAccount>();
+
+            try
+            {
+                channelMembers = await TeamsInfo.GetTeamMembersAsync(turnContext, teamsDetails.Id);
+            }
+            catch (ErrorResponseException ex)
+            {
+                // If bot is not part of team roster, 'Forbidden' status code is returned while fetching team members
+                if (ex.Response?.StatusCode == HttpStatusCode.Forbidden)
+                {
+                    this.logger.LogError("Bot is not part of team roaster", ex);
+                    return new MessagingExtensionActionResponse
+                    {
+                        Task = new TaskModuleContinueResponse
+                        {
+                            Value = new TaskModuleTaskInfo()
+                            {
+                                Card = TeamNotFoundCard.GetAttachment(),
+                                Height = this.noTeamTaskModuleHeight,
+                                Width = this.noTeamTaskModuleWidth,
+                            },
+                        },
+                    };
+                }
+            }
 
             // Get user email ID.
             var userTeamsEmailId = channelMembers.First(member => member.AadObjectId == activity.From.AadObjectId).Email;
@@ -409,7 +435,7 @@ namespace Microsoft.Teams.App.Badges
                     };
                     mentions.Add(mention);
                     entities.Add(mention);
-                    mentionText.Append(mention.Text).Append(',');
+                    mentionText.Append(mention.Text).Append(", ");
                 }
 
                 var awardedBymention = new Mention
