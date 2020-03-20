@@ -266,7 +266,7 @@
     <comment>Dropdown placeholder text in award badge task module</comment>
   </data>
   <data name="NoTeamFound" xml:space="preserve">
-    <value>Cannot find team. Please try opening again from team where app was installed.</value>
+    <value>Please try opening from the team where app is installed.</value>
     <comment>Error response to be sent if ME was invoked from other places instead of team where it was installed.</comment>
   </data>
   <data name="YourPreview" xml:space="preserve">
