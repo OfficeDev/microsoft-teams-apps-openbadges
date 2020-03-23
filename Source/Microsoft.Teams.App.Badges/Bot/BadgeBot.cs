@@ -16,6 +16,7 @@ namespace Microsoft.Teams.App.Badges
     using Microsoft.ApplicationInsights.DataContracts;
     using Microsoft.Bot.Builder;
     using Microsoft.Bot.Builder.Teams;
+    using Microsoft.Bot.Connector.Authentication;
     using Microsoft.Bot.Schema;
     using Microsoft.Bot.Schema.Teams;
     using Microsoft.Extensions.Logging;
@@ -93,16 +94,6 @@ namespace Microsoft.Teams.App.Badges
         private readonly ITokenHelper tokenHelper;
 
         /// <summary>
-        /// Reads and writes conversation state for your bot to storage.
-        /// </summary>
-        private readonly BotState conversationState;
-
-        /// <summary>
-        /// Stores user specific data.
-        /// </summary>
-        private readonly BotState userState;
-
-        /// <summary>
         /// Represents a set of key/value application configuration properties for Badges bot.
         /// </summary>
         private readonly BotSettings configurationSettings;
@@ -123,10 +114,13 @@ namespace Microsoft.Teams.App.Badges
         private readonly IBadgrIssuerHelper badgrIssuerHelper;
 
         /// <summary>
+        /// Microsoft app credentials.
+        /// </summary>
+        private readonly MicrosoftAppCredentials microsoftAppCredentials;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="BadgeBot"/> class.
         /// </summary>
-        /// <param name="conversationState">Reads and writes conversation state for your bot to storage.</param>
-        /// <param name="userState">Reads and writes user specific data to storage.</param>
         /// <param name="tokenHelper">Generating custom JWT token and retrieving Badgr access token for user.</param>
         /// <param name="badgeUserHelper">Instance of badge user helper.</param>
         /// <param name="optionsAccessor">A set of key/value application configuration properties for Badges bot.</param>
@@ -135,9 +129,8 @@ namespace Microsoft.Teams.App.Badges
         /// <param name="logger">Instance to send logs to the Application Insights service.</param>
         /// <param name="botAdapter">Open badges bot adapter.</param>
         /// <param name="badgrIssuerHelper">Helper to get issuer group entity ID.</param>
+        /// <param name="microsoftAppCredentials">Azure Bot channel registered application credentials.</param>
         public BadgeBot(
-            ConversationState conversationState,
-            UserState userState,
             ITokenHelper tokenHelper,
             IBadgrUserHelper badgeUserHelper,
             IOptionsMonitor<BotSettings> optionsAccessor,
@@ -145,19 +138,19 @@ namespace Microsoft.Teams.App.Badges
             IOptionsMonitor<OAuthSettings> oAuthSettings,
             ILogger<BadgeBot> logger,
             BotFrameworkAdapter botAdapter,
-            IBadgrIssuerHelper badgrIssuerHelper)
+            IBadgrIssuerHelper badgrIssuerHelper,
+            MicrosoftAppCredentials microsoftAppCredentials)
         {
             this.configurationSettings = optionsAccessor.CurrentValue;
             this.appBaseUrl = this.configurationSettings.AppBaseUri;
             this.connectionName = oAuthSettings.CurrentValue.ConnectionName;
             this.appInsightsInstrumentationKey = this.configurationSettings.AppInsightsInstrumentationKey;
             this.tenantId = this.configurationSettings.TenantId;
+            this.microsoftAppCredentials = microsoftAppCredentials;
 
             this.badgeApiAppSettings = badgeApiAppSettings.CurrentValue;
 
             this.logger = logger;
-            this.conversationState = conversationState;
-            this.userState = userState;
             this.tokenHelper = tokenHelper;
             this.badgeUserHelper = badgeUserHelper;
 
@@ -189,10 +182,6 @@ namespace Microsoft.Teams.App.Badges
                 }
 
                 await base.OnTurnAsync(turnContext, cancellationToken);
-
-                // Save any state changes that might have occurred during the turn.
-                await this.conversationState.SaveChangesAsync(turnContext, force: false, cancellationToken);
-                await this.userState.SaveChangesAsync(turnContext, force: false, cancellationToken);
             }
         }
 
@@ -287,26 +276,38 @@ namespace Microsoft.Teams.App.Badges
             }
 
             badgeDetails.AwardedBy = channelMembers.Where(member => member.Email == badgeDetails.AwardedBy).Select(member => member.Name).FirstOrDefault();
-            var sentActivity = await turnContext.SendActivityAsync(MessageFactory.Attachment(AwardCard.GetAwardBadgeAttachment(badgeDetails)));
+
+            var channelData = activity.GetChannelData<TeamsChannelData>();
+
+            var conversationParameters = new ConversationParameters
+            {
+                Activity = (Activity)MessageFactory.Attachment(AwardCard.GetAwardBadgeAttachment(badgeDetails)),
+                Bot = activity.Recipient,
+                IsGroup = true,
+                ChannelData = channelData,
+                TenantId = channelData.Tenant.Id,
+            };
 
             // Get activity for mentioning members who are awarded with badge.
             var mentionActivity = await this.GetMentionActivityAsync(awardRecipients, awardedBy, turnContext, cancellationToken);
-
-            if (mentionActivity != null)
-            {
-                if (badgeDetails.CommandContext.Equals("compose"))
+            await this.botAdapter.CreateConversationAsync(
+                "msteams",
+                turnContext.Activity.ServiceUrl,
+                this.microsoftAppCredentials,
+                conversationParameters,
+                async (newTurnContext, newCancellationToken) =>
                 {
-                    // Send mentions as reply to card sent above.
-                    var conversationReference = activity.GetReplyConversationReference(sentActivity);
-                    conversationReference.Conversation.Id = conversationReference.Conversation.Id + ";messageid=" + sentActivity.Id;
-                    mentionActivity.ApplyConversationReference(conversationReference);
-                    await turnContext.SendActivityAsync(mentionActivity);
-                }
-                else
-                {
-                    await turnContext.SendActivityAsync(mentionActivity);
-                }
-            }
+                    await this.botAdapter.ContinueConversationAsync(
+                        this.microsoftAppCredentials.MicrosoftAppId,
+                        newTurnContext.Activity.GetConversationReference(),
+                        async (conversationTurnContext, conversationCancellationToken) =>
+                        {
+                            mentionActivity.ApplyConversationReference(conversationTurnContext.Activity.GetConversationReference());
+                            await conversationTurnContext.SendActivityAsync(mentionActivity, conversationCancellationToken);
+                        },
+                        newCancellationToken);
+                },
+                cancellationToken).ConfigureAwait(false);
 
             return default;
         }

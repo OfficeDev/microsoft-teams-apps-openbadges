@@ -52,8 +52,6 @@ namespace Microsoft.Teams.App.Badges
 
             services.AddCustomJWTAuthentication(this.Configuration);
 
-            services.AddBotStates();
-
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {

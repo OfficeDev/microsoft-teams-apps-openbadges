@@ -126,7 +126,7 @@
     <comment>Message to be showed if tenant id doesn't match with authorized tenant</comment>
   </data>
   <data name="SignInButtonText" xml:space="preserve">
-    <value>Sign In</value>
+    <value>Sign in</value>
     <comment>Sign in button text for sign in card displayed to user if he is not signed in</comment>
   </data>
   <data name="SignInCardText" xml:space="preserve">
@@ -134,7 +134,7 @@
     <comment>Text to show on sign in card</comment>
   </data>
   <data name="SignInRequired" xml:space="preserve">
-    <value>Sign In required</value>
+    <value>Sign in required</value>
     <comment>Title for sign in card displayed to user if he is not signed in</comment>
   </data>
   <data name="TaskModuleTitle" xml:space="preserve">
@@ -162,7 +162,7 @@
     <comment>Header text of error message to be displayed in react app</comment>
   </data>
   <data name="WelcomeCardContent" xml:space="preserve">
-    <value>Create and award badges right in Teams! Thousands of orgs use Open Badges to recognize learning and achievement. These badges have verifiable data and can be shared across the web.</value>
+    <value>Create and award badges right in Teams! Thousands of organizations use digital badges to recognize learning and achievement. These badges have verifiable data and can be shared across the web.</value>
     <comment>Welcome card content text</comment>
   </data>
   <data name="WelcomeCardTitle" xml:space="preserve">
@@ -214,7 +214,7 @@
     <comment>Text to be displayed on card sent after awarding a badge</comment>
   </data>
   <data name="MentionText" xml:space="preserve">
-    <value>Hey {0} Way to go! - {1}</value>
+    <value>Hey {0} way to go! - {1}</value>
     <comment>Mentioning members who are awarded with badge where {0} is awarded members mention text and {1} indicating mention text for member who award badge</comment>
   </data>
   <data name="Award" xml:space="preserve">

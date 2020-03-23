@@ -19,7 +19,7 @@ namespace Microsoft.Teams.App.Badges.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Strings {
@@ -214,7 +214,7 @@ namespace Microsoft.Teams.App.Badges.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hey {0} Way to go! - {1}.
+        ///   Looks up a localized string similar to Hey {0} way to go! - {1}.
         /// </summary>
         public static string MentionText {
             get {
@@ -232,7 +232,7 @@ namespace Microsoft.Teams.App.Badges.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot find team. Please try opening again from team where app was installed..
+        ///   Looks up a localized string similar to Please try opening from the team where app is installed..
         /// </summary>
         public static string NoTeamFound {
             get {
@@ -331,7 +331,7 @@ namespace Microsoft.Teams.App.Badges.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sign In.
+        ///   Looks up a localized string similar to Sign in.
         /// </summary>
         public static string SignInButtonText {
             get {
@@ -349,7 +349,7 @@ namespace Microsoft.Teams.App.Badges.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sign In required.
+        ///   Looks up a localized string similar to Sign in required.
         /// </summary>
         public static string SignInRequired {
             get {
@@ -385,7 +385,7 @@ namespace Microsoft.Teams.App.Badges.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create and award badges right in Teams! Thousands of orgs use Open Badges to recognize learning and achievement. These badges have verifiable data and can be shared across the web..
+        ///   Looks up a localized string similar to Create and award badges right in Teams! Thousands of organizations use digital badges to recognize learning and achievement. These badges have verifiable data and can be shared across the web..
         /// </summary>
         public static string WelcomeCardContent {
             get {

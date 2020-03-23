@@ -31,7 +31,7 @@ Please read the license terms applicable to this app template [here](https://git
 
 * Use of this template does not guarantee acceptance of your app to the Teams app store.  To make this app available in the Teams app store, you will have to comply with [submission process and validation](https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish), and all associated requirements such as including your own privacy statement and terms of use for your app. 
 
-## **Getting** **Started**
+## Getting Started
 
 Begin with the [Solution overview](https://github.com/OfficeDev/microsoft-teams-apps-openbadges/wiki/Solution-Overview) to read about what the app does and how it works.
 

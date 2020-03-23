@@ -90,22 +90,6 @@ namespace Microsoft.Teams.App.Badges
                });
         }
 
-        /// <summary>
-        /// Adds user state and conversation state to specified IServiceCollection.
-        /// </summary>
-        /// <param name="services">Collection of services.</param>
-        public static void AddBotStates(this IServiceCollection services)
-        {
-            // Create the User state. (Used in this bot's Dialog implementation.)
-            services.AddSingleton<UserState>();
-
-            // Create the Conversation state. (Used by the Dialog system itself.)
-            services.AddSingleton<ConversationState>();
-
-            // Storage for conversation state and user state.
-            services.AddSingleton<IStorage>(new MemoryStorage());
-        }
-
         private static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy()
         {
             return HttpPolicyExtensions
