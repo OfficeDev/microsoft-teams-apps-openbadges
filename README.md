@@ -3,51 +3,45 @@ page_type: sample
 languages:
 - csharp
 products:
-- dotnet
-description: "Add 150 character max description"
-urlFragment: "update-this-to-unique-url-stub"
+- office-teams
+description: Create and award digital badges to peers to recognize great work.
+urlFragment: microsoft-teams-apps-openbadges
 ---
 
-# Official Microsoft Sample
+## Open Badges App Template
 
-<!-- 
-Guidelines on README format: https://review.docs.microsoft.com/help/onboard/admin/samples/concepts/readme-template?branch=master
+| [Documentation](https://github.com/OfficeDev/microsoft-teams-apps-openbadges/wiki) | [Deployment guide](https://github.com/OfficeDev/microsoft-teams-apps-openbadges/wiki/Deployment-guide) | [Architecture](https://github.com/OfficeDev/microsoft-teams-apps-openbadges/wiki/Solution-Overview)
+|--|--|--|
 
-Guidance on onboarding samples to docs.microsoft.com/samples: https://review.docs.microsoft.com/help/onboard/admin/samples/process/onboarding?branch=master
+In education, more schools and colleges are issuing digital badges to help their students display verified and openly-referenceable skills, accomplishments, quality or interest  to employers or graduate programs.
 
-Taxonomies for products and languages: https://review.docs.microsoft.com/new-hope/information-architecture/metadata/taxonomies?branch=master
--->
+Open Badges app will empower individuals to take their learning with them, wherever they go, building a rich picture of their lifelong learning journey by leveraging capabilities from the 3rd party digital badge issuing authority called Badgr.
 
-Give a short description for your sample here. What does it do and why is it important?
+Using the Open Badges app template in Microsoft teams, Users can create and award badges to team members right within the Teams' context. When a badge is awarded,  Recipients and other team members are notified about the awarded badge details in the channel by tagging them in a channel conversation. All the team members will be able to select badges from the list of available badges and award to one another, whereas only Team owners will be able to create new badges.
 
-## Contents
 
-Outline the file contents of the repository. It helps users navigate the codebase, build configuration and any related assets.
+## Legal Notice
+Please read the license terms applicable to this app template [here](https://github.com/OfficeDev/microsoft-teams-apps-openbadges/blob/master/LICENSE). In addition to these terms, by using this app template you agree to the following:
 
-| File/folder       | Description                                |
-|-------------------|--------------------------------------------|
-| `src`             | Sample source code.                        |
-| `.gitignore`      | Define what to ignore at commit time.      |
-| `CHANGELOG.md`    | List of changes to the sample.             |
-| `CONTRIBUTING.md` | Guidelines for contributing to the sample. |
-| `README.md`       | This README file.                          |
-| `LICENSE`         | The license for the sample.                |
+* You are responsible for complying with applicable privacy and security regulations related to use, collection and handling of any personal data by your app.  This includes complying with all internal privacy and security policies of your organization if your app is developed to be sideloaded internally within your organization.
 
-## Prerequisites
+* Microsoft will have no access to data collected through your app.  Microsoft will not be responsible for any data related incidents or data subject requests.
 
-Outline the required components and tools that a user might need to have on their machine in order to run the sample. This can be anything from frameworks, SDKs, OS versions or IDE releases.
+* Any trademarks or registered trademarks of Microsoft in the United States and/or other countries and logos included in this repository are the property of Microsoft, and the license for this project does not grant you rights to use any Microsoft names, logos or trademarks outside of this repository.  Microsoft’s general trademark guidelines can be found [here](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)
 
-## Setup
+* Use of this template does not guarantee acceptance of your app to the Teams app store.  To make this app available in the Teams app store, you will have to comply with [submission process and validation](https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish), and all associated requirements such as including your own privacy statement and terms of use for your app. 
 
-Explain how to prepare the sample once the user clones or downloads the repository. The section should outline every step necessary to install dependencies and set up any settings (for example, API keys and output folders).
+## Getting Started
 
-## Running the sample
+Begin with the [Solution overview](https://github.com/OfficeDev/microsoft-teams-apps-openbadges/wiki/Solution-Overview) to read about what the app does and how it works.
 
-Outline step-by-step instructions to execute the sample and see its output. Include steps for executing the sample from the IDE, starting specific services in the Azure portal or anything related to the overall launch of the code.
+When you're ready to try out open badges, or to use it in your own organization, follow the steps in the [Deployment guide](https://github.com/OfficeDev/microsoft-teams-apps-openbadges/wiki/Deployment-guide).
 
-## Key concepts
+## **Feedback**
 
-Provide users with more context on the tools and services used in the sample. Explain some of the code that is being used and how services interact with each other.
+Thoughts? Questions? Ideas? Share them with us on [Teams UserVoice](https://microsoftteams.uservoice.com/forums/555103-public) !
+
+Please report bugs and other code issues [here](https://github.com/OfficeDev/microsoft-teams-apps-openbadges/issues/new).
 
 ## Contributing
 

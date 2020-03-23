@@ -1,0 +1,86 @@
+/*
+    <copyright file="theme.css" company="Microsoft">
+    Copyright (c) Microsoft. All rights reserved.
+    </copyright>
+*/
+
+.container-div {
+    height: 96vh;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    width: 100vw;
+    position:fixed;
+}
+
+.container-subdiv {
+    max-height: 82vh;
+    overflow-y:auto;
+    width: auto;
+}
+
+.menu {
+    border-bottom: 0px; 
+    margin-bottom: 1rem;
+    margin-top: 0.5rem
+}
+
+.badge-icon {
+    width:3rem;
+    height:3rem;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100vw;
+    padding-bottom: 1.5rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+}
+
+.div-shadow {
+    border: 1px solid #E2E2E2;
+    box-shadow: 0 0 2rem 0 rgba(0,0,0,0.15);
+    border-radius: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.badge-default {
+    padding:1rem;
+}
+    .badge-default:hover {
+        background-color: #DEDDE6;
+        color: black;
+        cursor:pointer;
+    }
+
+.badge-dark {
+    padding: 1rem;
+}
+    .badge-dark:hover {
+        background-color: #454775;
+        color: white;
+        cursor: pointer;
+    }
+
+.badge-contrast {
+    padding: 1rem;
+}
+    .badge-contrast:hover {
+        background-color: #FFFF00;
+        color: black;
+        cursor: pointer;
+    }
+
+.table-badge-icon-cell {
+    max-width: 5rem;
+}
+
+.table-date-cell {
+    max-width: 10rem;
+}
+
+.table-badge-name-cell {
+    max-width: 15rem;
+}

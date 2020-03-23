@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ExceptionResponse" xml:space="preserve">
+    <value>Something went wrong. Try again in a few minutes.</value>
+    <comment>Generic error message sent if any exception occurs in bot code</comment>
+  </data>
+  <data name="InvalidTenant" xml:space="preserve">
+    <value>You do not have access to this app. Contact your IT admin.</value>
+    <comment>Message to be showed if tenant id doesn't match with authorized tenant</comment>
+  </data>
+  <data name="SignInButtonText" xml:space="preserve">
+    <value>Sign in</value>
+    <comment>Sign in button text for sign in card displayed to user if he is not signed in</comment>
+  </data>
+  <data name="SignInCardText" xml:space="preserve">
+    <value>To view or award badges, you’ll need to sign in.</value>
+    <comment>Text to show on sign in card</comment>
+  </data>
+  <data name="SignInRequired" xml:space="preserve">
+    <value>Sign in required</value>
+    <comment>Title for sign in card displayed to user if he is not signed in</comment>
+  </data>
+  <data name="TaskModuleTitle" xml:space="preserve">
+    <value>Create and award badges</value>
+    <comment>Task module title</comment>
+  </data>
+  <data name="CreateBadgeDescription" xml:space="preserve">
+    <value>Create new badge</value>
+    <comment>Badge description to be displayed for creating new badge in react app</comment>
+  </data>
+  <data name="CreateBadgeName" xml:space="preserve">
+    <value>Create badge</value>
+    <comment>Badge name to be displayed for creating new badge in react app</comment>
+  </data>
+  <data name="EmptyAllBadgesDescription" xml:space="preserve">
+    <value>When your team owner adds badges, they will appear here.</value>
+    <comment>Description of message to be displayed if there are no badges found in issuer group</comment>
+  </data>
+  <data name="EmptyAllBadgesTitle" xml:space="preserve">
+    <value>No badges to show</value>
+    <comment>Title of message to be displayed if there are no badges found in issuer group</comment>
+  </data>
+  <data name="SelectBadge" xml:space="preserve">
+    <value>Select a badge to award</value>
+    <comment>Header text of error message to be displayed in react app</comment>
+  </data>
+  <data name="WelcomeCardContent" xml:space="preserve">
+    <value>Create and award badges right in Teams! Thousands of organizations use digital badges to recognize learning and achievement. These badges have verifiable data and can be shared across the web.</value>
+    <comment>Welcome card content text</comment>
+  </data>
+  <data name="WelcomeCardTitle" xml:space="preserve">
+    <value>Welcome to Open Badges</value>
+    <comment>Welcome card title text</comment>
+  </data>
+  <data name="SessionExpired" xml:space="preserve">
+    <value>Your session has expired. Please sign in again to proceed.</value>
+    <comment>Error message to show in task module if user Badgr token is expired</comment>
+  </data>
+  <data name="AllBadges" xml:space="preserve">
+    <value>All badges</value>
+    <comment>All badges menu text showed in task module</comment>
+  </data>
+  <data name="AwardedBy" xml:space="preserve">
+    <value>Awarded by</value>
+    <comment>Awarded by text in table header showed in task module</comment>
+  </data>
+  <data name="Badge" xml:space="preserve">
+    <value>Badge</value>
+    <comment>Badge text in table header showed in task module</comment>
+  </data>
+  <data name="BadgeDescription" xml:space="preserve">
+    <value>Description</value>
+    <comment>Badge description text in table header showed in task module</comment>
+  </data>
+  <data name="BadgeName" xml:space="preserve">
+    <value>Name</value>
+    <comment>Badge name text in table header showed in task module</comment>
+  </data>
+  <data name="EmptyYourBadgesDescription" xml:space="preserve">
+    <value>You have no badges yet.</value>
+    <comment>Description of message to be displayed if there are no badges found for earned badges request</comment>
+  </data>
+  <data name="EmptyYourBadgesTitle" xml:space="preserve">
+    <value>No badges to show</value>
+    <comment>Title of message to be displayed if there are no badges found for earned badges request</comment>
+  </data>
+  <data name="OnDate" xml:space="preserve">
+    <value>Date</value>
+    <comment>On date text in table header in task module</comment>
+  </data>
+  <data name="YourBadges" xml:space="preserve">
+    <value>Your badges</value>
+    <comment>Your badges menu text</comment>
+  </data>
+  <data name="AwardedTo" xml:space="preserve">
+    <value>{0} awarded a badge to</value>
+    <comment>Text to be displayed on card sent after awarding a badge</comment>
+  </data>
+  <data name="MentionText" xml:space="preserve">
+    <value>Hey {0} way to go! - {1}</value>
+    <comment>Mentioning members who are awarded with badge where {0} is awarded members mention text and {1} indicating mention text for member who award badge</comment>
+  </data>
+  <data name="Award" xml:space="preserve">
+    <value>Award</value>
+    <comment>Award button text showed in task module</comment>
+  </data>
+  <data name="NoMatchesFound" xml:space="preserve">
+    <value>We couldn't find any matches.</value>
+    <comment>If no members found for search in dropdown present in task module</comment>
+  </data>
+  <data name="NoteCharacterLimitExceeded" xml:space="preserve">
+    <value>This text can't exceed 100 characters. Please update.</value>
+    <comment>Error message to be displayed if note character length is more than 100 in award badge task module</comment>
+  </data>
+  <data name="NoteForReceipientsPlaceholder" xml:space="preserve">
+    <value>Examples: Leading across teams, Most new partnerships in Q4</value>
+    <comment>Reason text area placeholder in award badge task module</comment>
+  </data>
+  <data name="NoteForRecipients" xml:space="preserve">
+    <value>Reason</value>
+    <comment>Note text area label in award badge task module</comment>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Preview</value>
+    <comment>Preview button text in task module</comment>
+  </data>
+  <data name="PreviewBadgeTitle" xml:space="preserve">
+    <value>Your preview</value>
+    <comment>Title to be shown on preview badge in task module</comment>
+  </data>
+  <data name="SelectAtleastOneMember" xml:space="preserve">
+    <value>Select at least one recipient</value>
+    <comment>Error message to show in award badge task module if no member selected in dropdown</comment>
+  </data>
+  <data name="ToBeAwardedTo" xml:space="preserve">
+    <value>Recipient(s)</value>
+    <comment>Label to show in award badge task module</comment>
+  </data>
+  <data name="UnauthorizedAccess" xml:space="preserve">
+    <value>Unauthorized access!</value>
+    <comment>Error page title if user not is authorized to access bot</comment>
+  </data>
+  <data name="InvalidAccountText" xml:space="preserve">
+    <value>Sign into Badgr with the same email address you use for Microsoft Teams.</value>
+    <comment>Error text to show in sign in card if Badgr account email doesnt match with account in Teams</comment>
+  </data>
+  <data name="SearchTeamMembers" xml:space="preserve">
+    <value>Enter one or more names or emails</value>
+    <comment>Dropdown placeholder text in award badge task module</comment>
+  </data>
+  <data name="NoTeamFound" xml:space="preserve">
+    <value>Please try opening from the team where app is installed.</value>
+    <comment>Error response to be sent if ME was invoked from other places instead of team where it was installed.</comment>
+  </data>
+  <data name="YourPreview" xml:space="preserve">
+    <value>Your preview</value>
+    <comment>Header text in adaptive card sent after awarding badge</comment>
+  </data>
+  <data name="BadgeCriteria" xml:space="preserve">
+    <value>Criteria</value>
+    <comment>Badge criteria text shown on award badge screen.</comment>
+  </data>
+</root>
