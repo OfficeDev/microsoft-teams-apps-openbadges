@@ -41,7 +41,7 @@
           "id": "badgr",
           "type": "action",
           "title": "Open Badges",
-          "description": "Open Badges",
+          "description": "View and award open badges",
           "initialRun": true,
           "fetchTask": true,
           "context": [
