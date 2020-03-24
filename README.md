@@ -13,12 +13,19 @@ urlFragment: microsoft-teams-apps-openbadges
 | [Documentation](https://github.com/OfficeDev/microsoft-teams-apps-openbadges/wiki) | [Deployment guide](https://github.com/OfficeDev/microsoft-teams-apps-openbadges/wiki/Deployment-guide) | [Architecture](https://github.com/OfficeDev/microsoft-teams-apps-openbadges/wiki/Solution-Overview)
 |--|--|--|
 
-In education, more schools and colleges are issuing digital badges to help their students display verified and openly-referenceable skills, accomplishments, quality or interest  to employers or graduate programs.
+In education sector, more schools and colleges are issuingÂ digital badgesÂ to help their students display verified and openly-referenceable skills, accomplishments, quality or interests  to potential employers or graduate programs.
 
-Open Badges app will empower individuals to take their learning with them, wherever they go, building a rich picture of their lifelong learning journey by leveraging capabilities from the 3rd party digital badge issuing authority called Badgr.
+Additionally, organizations are also looking for customized, white-labeled offerings to motivate and spur employee morale through digital badges within Teams. Open badges allows these organizations to deliver such custom and branded experiences for their employees.
 
-Using the Open Badges app template in Microsoft teams, Users can create and award badges to team members right within the Teams' context. When a badge is awarded,  Recipients and other team members are notified about the awarded badge details in the channel by tagging them in a channel conversation. All the team members will be able to select badges from the list of available badges and award to one another, whereas only Team owners will be able to create new badges.
+Open Badges app will empower individuals to take their learning with them, wherever they go, building a rich picture of their lifelong learning journey by leveraging capabilities from the 3rd party digital badge issuing authority called [Badgr](https://badgr.org/).
 
+
+Using the Open Badges app template in Microsoft teams, Users can create and award badges to team members right within the Teams' context. When a badge is awarded,  recipients and other team members are notified about the awarded badge details in the channel by tagging them in a channel conversation. All the team members will be able to select badges from the list of available badges and award to one another, whereas only Team owners will be able to create new badges.
+
+The awarded badges are recorded in the recipient's Badgr profile which is secure, portable and easily shareable.
+
+![App Home screen](https://github.com/OfficeDev/microsoft-teams-apps-openbadges/wiki/Images/Open_Badges_01.png)
+![Awarded badge is shared in a channel](https://github.com/OfficeDev/microsoft-teams-apps-openbadges/wiki/Images/Open_Badges_02.png)
 
 ## Legal Notice
 Please read the license terms applicable to this app template [here](https://github.com/OfficeDev/microsoft-teams-apps-openbadges/blob/master/LICENSE). In addition to these terms, by using this app template you agree to the following:
@@ -27,7 +34,7 @@ Please read the license terms applicable to this app template [here](https://git
 
 * Microsoft will have no access to data collected through your app.  Microsoft will not be responsible for any data related incidents or data subject requests.
 
-* Any trademarks or registered trademarks of Microsoft in the United States and/or other countries and logos included in this repository are the property of Microsoft, and the license for this project does not grant you rights to use any Microsoft names, logos or trademarks outside of this repository.  Microsoft’s general trademark guidelines can be found [here](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)
+* Any trademarks or registered trademarks of Microsoft in the United States and/or other countries and logos included in this repository are the property of Microsoft, and the license for this project does not grant you rights to use any Microsoft names, logos or trademarks outside of this repository.  Microsoftâ€™s general trademark guidelines can be found [here](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)
 
 * Use of this template does not guarantee acceptance of your app to the Teams app store.  To make this app available in the Teams app store, you will have to comply with [submission process and validation](https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish), and all associated requirements such as including your own privacy statement and terms of use for your app. 
 
