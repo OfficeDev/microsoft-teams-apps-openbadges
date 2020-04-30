@@ -28,11 +28,11 @@ The awarded badges are recorded in the recipient's Badgr profile which is secure
 ![Awarded badge is shared in a channel](https://github.com/OfficeDev/microsoft-teams-apps-openbadges/wiki/Images/Open_Badges_02.png)
 
 ## Legal Notice
-This app template is provided under the [MIT License](https://github.com/OfficeDev/microsoft-teams-apps-requestateam/blob/master/LICENSE) terms.  In addition to these terms, by using this app template you agree to the following:
+This app template is provided under the [MIT License](https://github.com/OfficeDev/microsoft-teams-apps-openbadges/blob/master/LICENSE) terms.  In addition to these terms, by using this app template you agree to the following:
 
 -	You are responsible for complying with all applicable privacy and security regulations related to use, collection and handling of any personal data by your app.  This includes complying with all internal privacy and security policies of your organization if your app is developed to be sideloaded internally within your organization.
 
--	Where applicable, you may be responsible for data related incidents or data subject requests for data collect through your app.
+-	Where applicable, you may be responsible for data related incidents or data subject requests for data collected through your app.
 
 -	Any trademarks or registered trademarks of Microsoft in the United States and/or other countries and logos included in this repository are the property of Microsoft, and the license for this project does not grant you rights to use any Microsoft names, logos or trademarks outside of this repository.  Microsoft’s general trademark guidelines can be found [here](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx).
 
