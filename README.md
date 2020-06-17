@@ -1,13 +1,3 @@
----
-page_type: sample
-languages:
-- csharp
-products:
-- office-teams
-description: Create and award digital badges to peers to recognize great work.
-urlFragment: microsoft-teams-apps-openbadges
----
-
 ## Open Badges App Template
 
 | [Documentation](https://github.com/OfficeDev/microsoft-teams-apps-openbadges/wiki) | [Deployment guide](https://github.com/OfficeDev/microsoft-teams-apps-openbadges/wiki/Deployment-guide) | [Architecture](https://github.com/OfficeDev/microsoft-teams-apps-openbadges/wiki/Solution-Overview)
@@ -63,3 +53,13 @@ provided by the bot. You will only need to do this once across all repos using o
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+---
+page_type: sample
+languages:
+- csharp
+products:
+- office-teams
+description: Create and award digital badges to peers to recognize great work.
+urlFragment: microsoft-teams-apps-openbadges
+---
