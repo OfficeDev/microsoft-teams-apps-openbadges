@@ -73,6 +73,8 @@ namespace Microsoft.Teams.App.Badges
             services.AddSingleton(provider => new OAuthClient((MicrosoftAppCredentials)provider.GetService(typeof(MicrosoftAppCredentials))));
 
             services.AddTransient(serviceProvider => (BotFrameworkAdapter)serviceProvider.GetRequiredService<IBotFrameworkHttpAdapter>());
+
+            services.AddMemoryCache();
         }
 
         /// <summary>

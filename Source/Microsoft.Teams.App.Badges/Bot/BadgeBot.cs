@@ -12,7 +12,7 @@ namespace Microsoft.Teams.App.Badges
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
-    using System.Xml;
+    using System.Web;
     using Microsoft.ApplicationInsights.DataContracts;
     using Microsoft.Bot.Builder;
     using Microsoft.Bot.Builder.Teams;
@@ -119,6 +119,11 @@ namespace Microsoft.Teams.App.Badges
         private readonly MicrosoftAppCredentials microsoftAppCredentials;
 
         /// <summary>
+        /// Helper to get cached team users information.
+        /// </summary>
+        private readonly TeamMemberCacheHelper teamMemberCacheHelper;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="BadgeBot"/> class.
         /// </summary>
         /// <param name="tokenHelper">Generating custom JWT token and retrieving Badgr access token for user.</param>
@@ -130,6 +135,7 @@ namespace Microsoft.Teams.App.Badges
         /// <param name="botAdapter">Open badges bot adapter.</param>
         /// <param name="badgrIssuerHelper">Helper to get issuer group entity ID.</param>
         /// <param name="microsoftAppCredentials">Azure Bot channel registered application credentials.</param>
+        /// <param name="teamMemberCacheHelper">Helper to get team users information.</param>
         public BadgeBot(
             ITokenHelper tokenHelper,
             IBadgrUserHelper badgeUserHelper,
@@ -139,7 +145,8 @@ namespace Microsoft.Teams.App.Badges
             ILogger<BadgeBot> logger,
             BotFrameworkAdapter botAdapter,
             IBadgrIssuerHelper badgrIssuerHelper,
-            MicrosoftAppCredentials microsoftAppCredentials)
+            MicrosoftAppCredentials microsoftAppCredentials,
+            TeamMemberCacheHelper teamMemberCacheHelper)
         {
             this.configurationSettings = optionsAccessor.CurrentValue;
             this.appBaseUrl = this.configurationSettings.AppBaseUri;
@@ -156,6 +163,7 @@ namespace Microsoft.Teams.App.Badges
 
             this.botAdapter = botAdapter;
             this.badgrIssuerHelper = badgrIssuerHelper;
+            this.teamMemberCacheHelper = teamMemberCacheHelper;
         }
 
         /// <summary>
@@ -267,7 +275,7 @@ namespace Microsoft.Teams.App.Badges
 
             // Get team members in Team.
             var teamsDetails = turnContext.Activity.TeamsGetTeamInfo();
-            var channelMembers = await TeamsInfo.GetTeamMembersAsync(turnContext, teamsDetails.Id, cancellationToken);
+            var channelMembers = await this.teamMemberCacheHelper.GetTeamMembersInfoAsync(turnContext, teamsDetails.Id, cancellationToken);
 
             for (var recipientCount = 0; recipientCount < badgeDetails.AwardRecipients.Count; recipientCount++)
             {
@@ -335,18 +343,18 @@ namespace Microsoft.Teams.App.Badges
                 };
             }
 
-            IEnumerable<TeamsChannelAccount> channelMembers = new List<TeamsChannelAccount>();
+            var memberInfo = new TeamsChannelAccount();
 
             try
             {
-                channelMembers = await TeamsInfo.GetTeamMembersAsync(turnContext, teamsDetails.Id);
+                memberInfo = await TeamsInfo.GetMemberAsync(turnContext, activity.From.AadObjectId);
             }
             catch (ErrorResponseException ex)
             {
                 // If bot is not part of team roster, 'Forbidden' status code is returned while fetching team members
                 if (ex.Response?.StatusCode == HttpStatusCode.Forbidden)
                 {
-                    this.logger.LogError("Bot is not part of team roaster", ex);
+                    this.logger.LogError("Bot is not part of team roster", ex);
                     return new MessagingExtensionActionResponse
                     {
                         Task = new TaskModuleContinueResponse
@@ -362,11 +370,8 @@ namespace Microsoft.Teams.App.Badges
                 }
             }
 
-            // Get user email ID.
-            var userTeamsEmailId = channelMembers.First(member => member.AadObjectId == activity.From.AadObjectId).Email;
-
             // Validate if Teams email ID matches with Badgr account email ID.
-            var isUserEmailIdValid = await this.badgeUserHelper.ValidateUserEmailIdAsync(userTeamsEmailId, userBadgrToken.Token);
+            var isUserEmailIdValid = await this.badgeUserHelper.ValidateUserEmailIdAsync(memberInfo.Email, userBadgrToken.Token);
             if (!isUserEmailIdValid)
             {
                 // If the user has not signed in with the same Azure Active Directory account which was used to authenticate to Teams,
@@ -418,7 +423,7 @@ namespace Microsoft.Teams.App.Badges
                 var entities = new List<Entity>();
                 var mentions = new List<Mention>();
                 var teamsDetails = turnContext.Activity.TeamsGetTeamInfo();
-                var channelMembers = await TeamsInfo.GetTeamMembersAsync(turnContext, teamsDetails.Id, cancellationToken);
+                var channelMembers = await this.teamMemberCacheHelper.GetTeamMembersInfoAsync(turnContext, teamsDetails.Id, cancellationToken);
 
                 var awardedToMemberDetails = channelMembers.Where(member => awardedToEmails.Contains(member.Email)).Select(member => new ChannelAccount { Id = member.Id, Name = member.Name });
                 var awardedByMemberDetails = channelMembers.Where(member => member.Email == awardedByEmail).Select(member => new ChannelAccount { Id = member.Id, Name = member.Name }).FirstOrDefault();
@@ -432,7 +437,7 @@ namespace Microsoft.Teams.App.Badges
                             Id = member.Id,
                             Name = member.Name,
                         },
-                        Text = $"<at>{XmlConvert.EncodeName(member.Name)}</at>",
+                        Text = $"<at>{HttpUtility.HtmlEncode(member.Name)}</at>",
                     };
                     mentions.Add(mention);
                     entities.Add(mention);
@@ -446,7 +451,7 @@ namespace Microsoft.Teams.App.Badges
                         Id = awardedByMemberDetails.Id,
                         Name = awardedByMemberDetails.Name,
                     },
-                    Text = $"<at>{XmlConvert.EncodeName(awardedByMemberDetails.Name)}</at>",
+                    Text = $"<at>{HttpUtility.HtmlEncode(awardedByMemberDetails.Name)}</at>",
                 };
                 entities.Add(awardedBymention);
 
