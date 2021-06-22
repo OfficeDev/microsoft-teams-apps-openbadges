@@ -18,6 +18,7 @@ namespace Microsoft.Teams.App.Badges
     using Microsoft.Teams.App.Badges.Helpers;
     using Microsoft.Teams.App.Badges.Helpers.DelegatingHandlers;
     using Microsoft.Teams.App.Badges.Models;
+    using Microsoft.Teams.Apps.Scrum.Common;
     using Polly;
     using Polly.Extensions.Http;
 
@@ -63,6 +64,7 @@ namespace Microsoft.Teams.App.Badges
             services.AddTransient<IKeyVaultHelper, KeyVaultHelper>();
             services.AddSingleton<ITokenHelper, TokenHelper>();
             services.AddSingleton<IKeyVaultClient>(new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(new AzureServiceTokenProvider().KeyVaultTokenCallback)));
+            services.AddSingleton<ITeamMemberCacheHelper, TeamMemberCacheHelper>();
         }
 
         /// <summary>

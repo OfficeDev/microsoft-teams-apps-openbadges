@@ -96,6 +96,11 @@ namespace Microsoft.Teams.App.Badges.Controllers
         private readonly IBadgrUserHelper badgrUserHelper;
 
         /// <summary>
+        /// Helper to get cached team users information.
+        /// </summary>
+        private readonly TeamMemberCacheHelper teamMemberCacheHelper;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="BadgeController"/> class.
         /// </summary>
         /// <param name="botAdapter">Open badges bot adapter.</param>
@@ -108,6 +113,7 @@ namespace Microsoft.Teams.App.Badges.Controllers
         /// <param name="badgeIssuerHelper">Instance of badge Issuer helper.</param>
         /// <param name="badgrApiHelper">Helper to handle errors and get user details.</param>
         /// <param name="badgrUserHelper">Helper to get user details from Badgr.</param>
+        /// <param name="teamMemberCacheHelper">Helper to get team users information.</param>
         public BadgeController(
             BotFrameworkAdapter botAdapter,
             IBadgrUserHelper badgeUserHelper,
@@ -118,7 +124,8 @@ namespace Microsoft.Teams.App.Badges.Controllers
             IKeyVaultHelper keyVaultHelper,
             IBadgrIssuerHelper badgeIssuerHelper,
             IBadgrApiHelper badgrApiHelper,
-            IBadgrUserHelper badgrUserHelper)
+            IBadgrUserHelper badgrUserHelper,
+            TeamMemberCacheHelper teamMemberCacheHelper)
         {
             this.badgeUserHelper = badgeUserHelper;
             this.logger = logger;
@@ -140,6 +147,7 @@ namespace Microsoft.Teams.App.Badges.Controllers
             this.badgeIssuerHelper = badgeIssuerHelper;
             this.badgrApiHelper = badgrApiHelper;
             this.badgrUserHelper = badgrUserHelper;
+            this.teamMemberCacheHelper = teamMemberCacheHelper;
         }
 
         /// <summary>
@@ -159,7 +167,7 @@ namespace Microsoft.Teams.App.Badges.Controllers
 
                 var userClaims = this.GetUserClaims();
 
-                IEnumerable<TeamsChannelAccount> teamsChannelAccounts = new List<TeamsChannelAccount>();
+                var teamsChannelAccounts = new List<TeamsChannelAccount>();
                 var conversationReference = new ConversationReference
                 {
                     ChannelId = teamId,
@@ -171,7 +179,7 @@ namespace Microsoft.Teams.App.Badges.Controllers
                     conversationReference,
                     async (context, token) =>
                     {
-                        teamsChannelAccounts = await TeamsInfo.GetTeamMembersAsync(context, teamId, default);
+                        var teamsChannelAccounts = await this.teamMemberCacheHelper.GetTeamMembersInfoAsync(context, teamId, token);
                     },
                     default);
 
