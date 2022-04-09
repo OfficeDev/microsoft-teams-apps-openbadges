@@ -7,7 +7,7 @@
     "@microsoft/applicationinsights-react-js": "^2.3.1",
     "@microsoft/teams-js": "^1.5.2",
     "axios": "^0.19.2",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "react": "^16.10.2",
     "react-appinsights": "^3.0.0-rc.6",
     "react-dom": "^16.10.2",
